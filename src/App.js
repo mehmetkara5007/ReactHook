@@ -1,25 +1,27 @@
-import React, { useState } from "react";
-import { Button } from "reactstrap";
+import React, { useEffect } from "react";
+import { useForm } from "./useForm";
 
-function App() {
-  const [{ sayi1, sayi2 }, setSayi] = useState({ sayi1: 10, sayi2: 20 });
+const App = () => {
+  const [values, handleChange] = useForm({ email: "", password: "" });
+  // const [values2, handleChange2] = useForm({ name: "", surName: "" });
+
+  useEffect(() => {
+    console.log("renddder");
+  });
 
   return (
-    <div className="React Hook">
-      <Button
-        onClick={() =>
-          setSayi((c) => ({
-            sayi1: c.sayi1 + 1,
-            sayi2: c.sayi2,
-          }))
-        }
-      >
-        +
-      </Button>
-      <div>{sayi1}</div>
-      <div>{sayi2}</div>
+    <div>
+      <>
+        <input name="email" value={values.email} onChange={handleChange} />
+        <input
+          name="password"
+          type="password"
+          value={values.password}
+          onChange={handleChange}
+        />
+      </>
     </div>
   );
-}
+};
 
 export default App;
