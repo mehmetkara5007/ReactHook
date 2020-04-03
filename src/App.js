@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import { Button } from "reactstrap";
 
 function App() {
+  const [{ sayi1, sayi2 }, setSayi] = useState({ sayi1: 10, sayi2: 20 });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="React Hook">
+      <Button
+        onClick={() =>
+          setSayi((c) => ({
+            sayi1: c.sayi1 + 1,
+            sayi2: c.sayi2,
+          }))
+        }
+      >
+        +
+      </Button>
+      <div>{sayi1}</div>
+      <div>{sayi2}</div>
     </div>
   );
 }
